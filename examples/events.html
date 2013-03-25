@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="../assets/ytpl.css" />
+		<script type="text/javascript" src="../src/ytpl.js"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var ytpl = new YTPL('ytpl', {list: 'SPOHbM4GGWADc5bZgvbivvttAuWGow6h05'});
+				
+				ytpl.add_listener(YTPL.AUTOPLAY, function(obj) {
+					document.getElementById('log').innerHTML += '- AUTOPLAY ('+(obj.autoplay ? 'on' : 'off')+')<br />';
+				});
+				
+				ytpl.add_listener(YTPL.SHUFFLE, function(obj) {
+					document.getElementById('log').innerHTML += '- SHUFFLE ('+(obj.shuffle ? obj.shuffle : 'off')+')<br />';
+				});
+				
+				ytpl.add_listener(YTPL.PLAYLIST_READY, function(obj) {
+					document.getElementById('log').innerHTML += '- PLAYLIST_READY<br />';
+				});
+				
+				ytpl.add_listener(YTPL.PLAYER_READY, function(obj) {
+					document.getElementById('log').innerHTML += '- PLAYER_READY<br />';
+				});
+				
+				ytpl.add_listener(YTPL.VIDEO_SELECTED, function(obj) {
+					document.getElementById('log').innerHTML += '- VIDEO_SELECTED ('+obj.title+')<br />';
+				});
+				
+			};
+		</script>
+	</head>
+	<body>
+		<div id="ytpl"></div>
+		<div id="log" style="padding-top:12px;font-size: 11px;">Events:<br /></div>
+	</body>
+</html>
